@@ -4,6 +4,6 @@ with open("health.txt", "r", encoding="utf-8") as file: #파일 읽기. 인코�
     data = []
 
     for line in file:
-        data.append(line.strip())
+        data.append(line.strip().split())
 
 print(data)
