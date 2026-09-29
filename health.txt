@@ -1,0 +1,47 @@
+import turtle
+
+screen = turtle.Screen()
+screen.setup(1000, 600)
+screen.title("BMI 표")
+
+t = turtle.Turtle()
+t.hideturtle()
+t.speed(0)
+t.penup()
+
+start_x = -350
+start_y = 200
+
+cell_w = 140
+cell_h = 40
+
+headers = ["전화번호", "이름", "키(cm)", "몸무게(kg)", "BMI", "소견"]
+rows = [
+    ["010-2445-1173", "윤완", "173", "60", "20.05", "정상"],
+]
+
+def draw_cell(x, y, w, h, text):
+    t.goto(x, y)
+    t.setheading(0)
+    t.pendown()
+    for _ in range(2):
+        t.forward(w)
+        t.left(90)
+        t.forward(h)
+        t.left(90)
+    t.penup()
+
+    t.goto(x + 10, y + 10)
+    t.write(text, font=("Arial", 10, "normal"))
+
+for i, text in enumerate(headers):
+    x = start_x + i * cell_w
+    draw_cell(x, start_y, cell_w, cell_h, text)
+
+for r_idx, row in enumerate(rows):
+    y = start_y - (r_idx + 1) * cell_h
+    for c_idx, text in enumerate(row):
+        x = start_x + c_idx * cell_w
+        draw_cell(x, y, cell_w, cell_h, text)
+
+screen.mainloop()
